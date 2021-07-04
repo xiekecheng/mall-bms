@@ -1,6 +1,8 @@
 module.exports = (req,res,next)=>{
     const username = req.cookies.username
-    if(req.url==='/login'||req.url==='/forget'){
+    console.log(req.url);
+    console.log(req.path);
+    if(req.url==='/login'||req.url==='/forget'||req.path==='/forget/resetPass'){
         next()
     }else{
         if(!username){
