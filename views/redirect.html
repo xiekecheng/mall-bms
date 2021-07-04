@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="refresh" content="3,url=index.html">
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script language="javascript">
+    $(function() {
+        $('.error').css({
+            'position': 'absolute',
+            'left': ($(window).width() - 490) / 2
+        });
+        $(window).resize(function() {
+            $('.error').css({
+                'position': 'absolute',
+                'left': ($(window).width() - 490) / 2
+            });
+        })
+    });
+    </script>
+</head>
+
+<body style="background:#edf6fa;">
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+            <li><a href="#">首页</a></li>
+            <li><a href="#">错误提示</a></li>
+        </ul>
+    </div>
+    <div class="errorTip">
+        <h2>{{message}}</h2>
+        <p><span class="num">{{num}}</span>秒后去往下一个页面！</p>
+        <div class="reindex tologin"><a href="{{url}}" target="_parent">点击此处直接跳转</a></div>
+    </div>
+</body>
+<script>
+    let num = document.querySelector('.num').innerText-0
+    // setTimeout(() => {
+    //     // 跳转
+    //     // document.querySelector('.reindex a')
+    //     location.href = document.querySelector('.reindex a').getAttribute('href')
+    // }, num*1000);
+
+    setInterval(() => {
+        --num
+        document.querySelector('.num').innerText = num
+        if(num==0){
+            location.href = document.querySelector('.reindex a').getAttribute('href')
+        }
+    }, 1000);
+
+</script>
+</html>
